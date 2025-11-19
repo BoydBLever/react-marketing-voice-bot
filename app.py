@@ -74,7 +74,7 @@ def visualize_audio(audio_path):
         ax.set_ylabel('Amplitude')
         ax.set_title('Audio Waveform')
         
-        # 将图形转换为图像
+        
         buf = io.BytesIO()
         plt.savefig(buf, format='png')
         buf.seek(0)

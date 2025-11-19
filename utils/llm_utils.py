@@ -133,3 +133,4 @@ class LLMProcessor:
         # More structured processing logic can be added here
         # Currently simply returns text analysis results
         return {"analysis": response.content}
+    
