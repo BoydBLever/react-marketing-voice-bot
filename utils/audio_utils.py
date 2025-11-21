@@ -2,10 +2,10 @@ import sounddevice as sd
 import soundfile as sf
 import numpy as np
 import tempfile
-import openai
 from gtts import gTTS
 import os
 from typing import Optional
+from utils.omni_asr import transcribe_with_omni_asr
 
 class AudioProcessor:
     def __init__(self, sample_rate: int = 16000):
@@ -46,27 +46,21 @@ class AudioProcessor:
             print(f"Recording error: {str(e)}")
             return None
 
-    def transcribe_audio(self, audio_path: str) -> Optional[str]:
+    def transcribe_audio(self, audio_file):
         """
-        Transcribe audio using Whisper API
+        Transcription function using OmniASR.
+        """
+        if isinstance(audio_file, str):
+            return transcribe_with_omni_asr(audio_file)
         
-        Args:
-            audio_path: Path to audio file
-            
-        Returns:
-            Transcribed text
-        """
-        try:
-            with open(audio_path, 'rb') as audio_file:
-                client = openai.OpenAI()
-                transcript = client.audio.transcriptions.create(
-                    model="whisper-1",
-                    file=audio_file
-                )
-                return transcript.text
-        except Exception as e:
-            print(f"Transcription error: {str(e)}")
-            return None
+        temp_path = "temp_input.wav"
+
+        # save uploaded file to disk
+        with open(temp_path, "wb") as f:
+            f.write(audio_file.read())
+        
+        return transcribe_with_omni_asr(temp_path)
+
 
     def text_to_speech(self, text: str, lang: str = 'zh') -> Optional[str]:
         """
