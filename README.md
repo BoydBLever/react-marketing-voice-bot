@@ -1,4 +1,4 @@
-# Multilingual Voice AI Bot (OmniASR + Sherpa-ONNX)
+# Omnilingual Voice AI Bot (OmniASR + Sherpa-ONNX)
 
 This **multilingual voice conversation bot** records microphone audio, transcribes the speech using **Meta’s OmniASR (`omnilingual_1b`)** via **Sherpa-ONNX**, sends the text to an LLM for reasoning, then converts the reply back into speech and plays it automatically. You can speak in any of 1600+ languages, and the bot will understand and reply in that same language.
 
