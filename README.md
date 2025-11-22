@@ -12,8 +12,6 @@ This **multilingual voice conversation bot** records microphone audio, transcrib
 - LLM response generation  
 - Text-to-speech output  
 - Automatic local audio playback  
-- Fully local ASR (no cloud APIs)
-
 ---
 
 ## Requirements
