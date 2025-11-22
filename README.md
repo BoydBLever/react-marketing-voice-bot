@@ -62,7 +62,7 @@ python -m streamlit run app.py
 flowchart LR
     A[User Speech] --> B[OmniASR via sherpa-onnx]
     B --> C[Transcript Text]
-    C --> D[LLM Processor (LangChain + ChatOpenAI)]
+    C --> D[LLM Processor - LangChain / ChatOpenAI]
     D --> E[Mode Switch / System Prompt Routing]
     E --> F[LLM Response Text]
     F --> G[gTTS Text-to-Speech Engine]
