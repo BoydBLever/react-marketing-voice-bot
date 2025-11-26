@@ -1,5 +1,7 @@
 # Omnilingual Voice AI Bot (OmniASR + Sherpa-ONNX)
+# Omnilingual Voice AI Bot (OmniASR + Sherpa-ONNX)
 
+This **voice conversation bot** records microphone audio, transcribes the speech using **Meta’s OmniASR (`omnilingual_1b`)** via **Sherpa-ONNX**, sends the text to an LLM for reasoning, then converts the reply back into speech and plays it automatically. You can speak in any of 1600+ languages, and the bot will understand and reply in that same language.
 This **voice conversation bot** records microphone audio, transcribes the speech using **Meta’s OmniASR (`omnilingual_1b`)** via **Sherpa-ONNX**, sends the text to an LLM for reasoning, then converts the reply back into speech and plays it automatically. You can speak in any of 1600+ languages, and the bot will understand and reply in that same language.
 
 ---
@@ -30,8 +32,20 @@ This **voice conversation bot** records microphone audio, transcribes the speech
 git clone https://github.com/BoydBLever/Omnilingual-Voice-Bot.git
 cd react-marketing-voice-bot
 ```
+```
+git clone https://github.com/BoydBLever/Omnilingual-Voice-Bot.git
+cd react-marketing-voice-bot
+```
 
 ### 2. Create a virtual environment
+Option A — Using Conda (recommended)
+```
+conda create -n audio_llm python=3.11
+conda activate audio_llm
+```
+
+Option B — Using Python venv
+```
 Option A — Using Conda (recommended)
 ```
 conda create -n audio_llm python=3.11
@@ -43,18 +57,24 @@ Option B — Using Python venv
 python3 -m venv audio_llm
 source audio_llm/bin/activate
 ```
+```
 
 ### 3. Install Python dependencies
 ```
+```
 pip install -r requirements.txt
+```
 ```
 
 ### 4. Install system dependencies
 ```
+```
 brew install cmake ffmpeg libsndfile
+```
 ```
 
 ### 5. Build Sherpa-ONNX from source
+```
 ```
 cd ~
 git clone https://github.com/k2-fsa/sherpa-onnx.git
@@ -63,8 +83,10 @@ cd sherpa-build/sherpa-onnx/build
 cmake ../../sherpa-onnx -DCMAKE_BUILD_TYPE=Release
 make -j8
 ```
+```
 
 ### 6. Verify OmniASR model works
+```
 ```
 /Users/<you>/sherpa-build/sherpa-onnx/build/bin/sherpa-onnx-offline \
   --tokens="asr_models/omnilingual_1b/tokens.txt" \
@@ -97,4 +119,3 @@ flowchart LR
     F --> G[TTS Output]
     G --> H[Spoken Reply]
 ```
-
